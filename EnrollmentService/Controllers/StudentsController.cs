@@ -44,7 +44,7 @@ namespace EnrollmentService.Controllers
         {
             try
             {
-                Console.WriteLine($"--> Getting Students With ID: {id} .....");
+                Console.WriteLine($"--> Getting Student With ID: {id} .....");
                 var studentItem = _repository.GetStudentById(id);
                 if (studentItem != null)
                 {
@@ -63,7 +63,7 @@ namespace EnrollmentService.Controllers
         {
             try
             {
-                Console.WriteLine($"--> Update Students With ID: {id} .....");
+                Console.WriteLine($"--> Update Student With ID: {id} .....");
                 var studentModel = _mapper.Map<Student>(studentForCreateDto);
                 _repository.UpdateStudent(id, studentModel);
                 _repository.SaveChanges();
@@ -87,7 +87,7 @@ namespace EnrollmentService.Controllers
         {
             try
             {
-                Console.WriteLine($"--> Delete Students With ID: {id} .....");
+                Console.WriteLine($"--> Delete Student With ID: {id} .....");
                 _repository.DeleteStudent(id);
                 _repository.SaveChanges();
 
@@ -104,7 +104,7 @@ namespace EnrollmentService.Controllers
         {
             try
             {
-                Console.WriteLine("--> Creating Students .....");
+                Console.WriteLine("--> Creating Student .....");
                 var studentModel = _mapper.Map<Student>(studentForCreateDto);
                 _repository.CreateStudent(studentModel);
                 _repository.SaveChanges();
