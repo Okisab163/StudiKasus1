@@ -8,7 +8,6 @@ namespace PaymentService.Profiles
     {
         public PaymentProfile()
         {
-            CreateMap<Enrollment, EnrollmentDto>();
             CreateMap<PaymentForCreateDto, Payment>();
             CreateMap<Payment, PaymentDto>();
         }

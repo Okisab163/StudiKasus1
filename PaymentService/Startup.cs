@@ -46,6 +46,8 @@ namespace PaymentService
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+            services.AddScoped<IPaymentRepo, PaymentRepo>();
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
