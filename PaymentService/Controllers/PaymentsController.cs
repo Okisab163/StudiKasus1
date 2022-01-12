@@ -67,24 +67,32 @@ namespace PaymentService.Controllers
         [HttpPost]
         public ActionResult<PaymentDto> CreatePaymentForEnrollment(int enrollmentId, PaymentForCreateDto paymentForCreateDto)
         {
-            Console.WriteLine($"--> CreatePaymentForEnrollment: {enrollmentId}");
-            if (!_repository.EnrollmentExist(enrollmentId))
+            try
             {
-                return NotFound();
+                Console.WriteLine($"--> CreatePaymentForEnrollment: {enrollmentId}");
+                if (!_repository.EnrollmentExist(enrollmentId))
+                {
+                    return NotFound();
+                }
+
+                var payment = _mapper.Map<Payment>(paymentForCreateDto);
+                _repository.CreatePayment(enrollmentId, payment);
+                _repository.SaveChanges();
+                var paymentReadDto = _mapper.Map<PaymentDto>(payment);
+
+                return CreatedAtRoute(nameof(GetPaymentsForEnrollment),
+                    new
+                    {
+                        enrollmentId = enrollmentId,
+                        paymentId = paymentReadDto.PaymentID
+                    },
+                        paymentReadDto
+                    );
             }
-
-            var payment = _mapper.Map<Payment>(paymentForCreateDto);
-            _repository.CreatePayment(enrollmentId, payment);
-            _repository.SaveChanges();
-            var paymentReadDto = _mapper.Map<PaymentDto>(payment);
-
-            return CreatedAtRoute(nameof(GetPaymentsForEnrollment),
-                new 
-                { 
-                    enrollmentId = enrollmentId, 
-                    paymentId = paymentReadDto.PaymentID }, 
-                    paymentReadDto
-                );
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

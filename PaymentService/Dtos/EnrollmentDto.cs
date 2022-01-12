@@ -1,8 +1,13 @@
 ﻿namespace PaymentService.Dtos
 {
+    public enum Grade
+    {
+        A, B, C, D, F
+    }
     public class EnrollmentDto
     {
-        public int PaymentID { get; set; }
-        public string Name { get; set; }
+        public int CourseID { get; set; }
+        public int StudentID { get; set; }
+        public Grade Grade { get; set; }
     }
 }

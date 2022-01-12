@@ -5,9 +5,10 @@ namespace PaymentService.Dtos
     public class EnrollmentForCreateDto
     {
         [Required]
-        public int ExternatlID { get; set; }
-
+        public int CourseID { get; set; }
         [Required]
-        public string Name { get; set; }
+        public int StudentID { get; set; }
+        [Required]
+        public Grade Grade { get; set; }
     }
 }

@@ -40,9 +40,8 @@ namespace PaymentService
             else
             {
                 Console.WriteLine("--> Using InMem Db");
-                services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(
-                    Configuration.GetConnectionString("LocalConnection")
-                ));
+                services.AddDbContext<ApplicationDbContext>(
+                opt => opt.UseInMemoryDatabase("InMem"));
             }
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

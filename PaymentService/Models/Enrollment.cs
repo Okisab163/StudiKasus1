@@ -3,6 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PaymentService.Models
 {
+    public enum Grade
+    {
+        A, B, C, D, F
+    }
     public class Enrollment
     {
         [Key]
@@ -10,10 +14,11 @@ namespace PaymentService.Models
         public int EnrollmentID { get; set; }
 
         [Required]
-        public int ExternatlID { get; set; }
-
+        public int CourseID { get; set; }
         [Required]
-        public string Name { get; set; }
+        public int StudentID { get; set; }
+        [Required]
+        public Grade Grade { get; set; }
         public ICollection<Payment> Payments { get; set; } =
             new List<Payment>();
     }

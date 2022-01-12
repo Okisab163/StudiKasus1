@@ -40,11 +40,6 @@ namespace PaymentService.Data
             return _context.Enrollments.Any(p => p.EnrollmentID == enrollmentid);
         }
 
-        public bool ExternalEnrollmentExist(int externalEnrollmentId)
-        {
-            return _context.Enrollments.Any(p => p.ExternatlID == externalEnrollmentId);
-        }
-
         public IEnumerable<Enrollment> GetAllEnrollments()
         {
             return _context.Enrollments.ToList();
@@ -61,7 +56,7 @@ namespace PaymentService.Data
         {
             return _context.Payments
                 .Where(p => p.EnrollmentId == enrollmentid)
-                .OrderBy(p => p.Enrollment.Name);
+                .OrderBy(p => p.Enrollment.EnrollmentID);
         }
 
         public bool SaveChanges()
