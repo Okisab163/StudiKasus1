@@ -48,7 +48,7 @@ namespace EnrollmentService.Controllers
                 var courseItem = _repository.GetCourseById(id);
                 if (courseItem != null)
                 {
-                    return Ok(_mapper.Map<StudentDto>(courseItem));
+                    return Ok(_mapper.Map<CourseDto>(courseItem));
                 }
                 return NotFound();
             }
