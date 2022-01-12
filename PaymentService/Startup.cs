@@ -34,14 +34,15 @@ namespace PaymentService
             {
                 Console.WriteLine("--> Using Sql Server Db");
                 services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(
-                    Configuration.GetConnectionString("LocalConnection")
+                    Configuration.GetConnectionString("ProductionConnection")
                 ));
             }
             else
             {
-                Console.WriteLine("--> Using InMem Db");
-                services.AddDbContext<ApplicationDbContext>(
-                opt => opt.UseInMemoryDatabase("InMem"));
+                Console.WriteLine("--> Using Local SQL Server Db");
+                services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(
+                    Configuration.GetConnectionString("LocalConnection")
+                ));
             }
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
