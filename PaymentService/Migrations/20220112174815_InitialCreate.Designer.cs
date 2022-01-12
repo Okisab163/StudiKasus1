@@ -10,7 +10,7 @@ using PaymentService.Data;
 namespace PaymentService.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220112143811_InitialCreate")]
+    [Migration("20220112174815_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,12 +28,14 @@ namespace PaymentService.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ExternatlID")
+                    b.Property<int>("CourseID")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StudentID")
+                        .HasColumnType("int");
 
                     b.HasKey("EnrollmentID");
 

@@ -20,8 +20,8 @@ namespace AuthServer.Controllers
             _repository = repository;
         }
 
-        [AllowAnonymous]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<ActionResult> Registration(UserForCreateDto userForCreateDto)
         {
             try
@@ -36,8 +36,8 @@ namespace AuthServer.Controllers
             }
         }
 
-        [AllowAnonymous]
         [HttpPost("Authentication")]
+        [AllowAnonymous]
         public async Task<ActionResult<User>> Authentication(UserForCreateDto userForCreateDto)
         {
             try

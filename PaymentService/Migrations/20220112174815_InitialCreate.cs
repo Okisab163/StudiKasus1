@@ -13,8 +13,9 @@ namespace PaymentService.Migrations
                 {
                     EnrollmentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ExternatlID = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    CourseID = table.Column<int>(type: "int", nullable: false),
+                    StudentID = table.Column<int>(type: "int", nullable: false),
+                    Grade = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

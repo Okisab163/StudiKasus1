@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EnrollmentService.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220112122555_InitialCreate")]
+    [Migration("20220112174718_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
