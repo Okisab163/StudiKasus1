@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace EnrollmentService.SyncDataServices.Http
 {
-    public class HttpCommandDataClient : IEnrollmentDataClient
+    public class HttpPaymentDataClient : IEnrollmentDataClient
     {
         private readonly HttpClient _httpClient;
         private readonly IConfiguration _configuration;
 
-        public HttpCommandDataClient(HttpClient httpClient, IConfiguration configuration)
+        public HttpPaymentDataClient(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
             _configuration = configuration;
@@ -30,11 +30,11 @@ namespace EnrollmentService.SyncDataServices.Http
 
             if (response.IsSuccessStatusCode)
             {
-                Console.WriteLine("--> Sync POST to PaymentService was OK !");
+                Console.WriteLine("--> Sync POST to PaymentService Was OK !");
             }
             else
             {
-                Console.WriteLine("--> Sync POST to PaymentService failed");
+                Console.WriteLine("--> Sync POST to PaymentService Failed");
             }
         }
     }

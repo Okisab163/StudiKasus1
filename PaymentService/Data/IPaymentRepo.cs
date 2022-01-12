@@ -7,13 +7,13 @@ namespace PaymentService.Data
     {
         bool SaveChanges();
 
-        //platforms
-        IEnumerable<Enrollment> GetAllPlatforms();
+        //Enrollments
+        IEnumerable<Enrollment> GetAllEnrollments();
         void CreateEnrollment(Enrollment enrollment);
         bool EnrollmentExist(int enrollmentid);
-        bool ExternalEnrollmentExist(int externalPlatformId);
+        bool ExternalEnrollmentExist(int externalEnrollmentId);
 
-        //Command
+        //Payments
         IEnumerable<Payment> GetPaymentsForEnrollment(int enrollmentid);
         Payment GetPayment(int enrollmentid, int paymentId);
         void CreatePayment(int enrollmentid, Payment payment);

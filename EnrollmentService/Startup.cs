@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using EnrollmentService.Data;
 using Microsoft.EntityFrameworkCore;
+using EnrollmentService.SyncDataServices.Http;
 
 namespace EnrollmentService
 {
@@ -50,6 +51,8 @@ namespace EnrollmentService
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IEnrollmentRepo, EnrollmentRepo>();
+
+            services.AddHttpClient<IEnrollmentDataClient, HttpPaymentDataClient>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
