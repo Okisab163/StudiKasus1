@@ -72,6 +72,8 @@ namespace PaymentService
 
             app.UseAuthorization();
 
+            PrepDb.PrepPopulation(app, env.IsProduction());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
