@@ -1,10 +1,12 @@
-﻿namespace PaymentService.Dtos
+﻿using System;
+
+namespace PaymentService.Dtos
 {
     public class PaymentDto
     {
-        public int Id { get; set; }
-        public string HowTo { get; set; }
-        public string CommandLine { get; set; }
+        public int PaymentID { get; set; }
+        public int Price { get; set; }
+        public DateTime PaymentDate { get; set; }
         public int EnrollmentId { get; set; }
     }
 }

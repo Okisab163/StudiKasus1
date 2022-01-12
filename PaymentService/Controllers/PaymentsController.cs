@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace PaymentService.Controllers
 {
     [ApiController]
-    [Route("api/PaymentService/{platformId}/[controller]")]
+    [Route("api/PaymentService/{enrollmentId}/[controller]")]
     public class PaymentsController : ControllerBase
     {
         private readonly IPaymentRepo _repository;
@@ -23,16 +23,16 @@ namespace PaymentService.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<PaymentDto>> GetPaymentsForEnrollment(int enrollmentid)
+        public ActionResult<IEnumerable<PaymentDto>> GetPaymentsForEnrollment(int enrollmentId)
         {
             try
             {
-                Console.WriteLine($"--> GetPaymentsForEnrollment: {enrollmentid}");
-                if (!_repository.EnrollmentExist(enrollmentid))
+                Console.WriteLine($"--> GetPaymentsForEnrollment: {enrollmentId}");
+                if (!_repository.EnrollmentExist(enrollmentId))
                 {
                     return NotFound();
                 }
-                var payments = _repository.GetPaymentsForEnrollment(enrollmentid);
+                var payments = _repository.GetPaymentsForEnrollment(enrollmentId);
                 return Ok(_mapper.Map<IEnumerable<PaymentDto>>(payments));
             }
             catch (Exception ex)
@@ -41,17 +41,17 @@ namespace PaymentService.Controllers
             }
         }
 
-        [HttpGet("{commandId}", Name = "GetCommandForPlatform")]
-        public ActionResult<PaymentDto> GetPaymentsForEnrollment(int enrollmentid, int paymentId)
+        [HttpGet("{paymentId}", Name = "GetPaymentsForEnrollment")]
+        public ActionResult<PaymentDto> GetPaymentsForEnrollment(int enrollmentId, int paymentId)
         {
             try
             {
-                Console.WriteLine($"--> GetPaymentsForEnrollment: {enrollmentid} / {paymentId}");
-                if (!_repository.EnrollmentExist(enrollmentid))
+                Console.WriteLine($"--> GetPaymentsForEnrollment: {enrollmentId} / {paymentId}");
+                if (!_repository.EnrollmentExist(enrollmentId))
                 {
                     return NotFound();
                 }
-                var payment = _repository.GetPayment(enrollmentid, paymentId);
+                var payment = _repository.GetPayment(enrollmentId, paymentId);
                 if (payment == null)
                 {
                     return NotFound();
@@ -65,24 +65,24 @@ namespace PaymentService.Controllers
         }
 
         [HttpPost]
-        public ActionResult<PaymentDto> CreatePaymentForEnrollment(int enrollmentid, PaymentForCreateDto paymentForCreateDto)
+        public ActionResult<PaymentDto> CreatePaymentForEnrollment(int enrollmentId, PaymentForCreateDto paymentForCreateDto)
         {
-            Console.WriteLine($"--> CreatePaymentForEnrollment: {enrollmentid}");
-            if (!_repository.EnrollmentExist(enrollmentid))
+            Console.WriteLine($"--> CreatePaymentForEnrollment: {enrollmentId}");
+            if (!_repository.EnrollmentExist(enrollmentId))
             {
                 return NotFound();
             }
 
             var payment = _mapper.Map<Payment>(paymentForCreateDto);
-            _repository.CreatePayment(enrollmentid, payment);
+            _repository.CreatePayment(enrollmentId, payment);
             _repository.SaveChanges();
             var paymentReadDto = _mapper.Map<PaymentDto>(payment);
 
             return CreatedAtRoute(nameof(GetPaymentsForEnrollment),
                 new 
                 { 
-                    platformId = enrollmentid, 
-                    paymentId = paymentReadDto.Id }, 
+                    enrollmentId = enrollmentId, 
+                    paymentId = paymentReadDto.PaymentID }, 
                     paymentReadDto
                 );
         }

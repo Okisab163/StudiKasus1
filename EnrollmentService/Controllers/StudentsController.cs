@@ -68,11 +68,9 @@ namespace EnrollmentService.Controllers
                 _repository.UpdateStudent(id, studentModel);
                 _repository.SaveChanges();
 
-                var studentReadDto = _mapper.Map<StudentDto>(studentModel);
-
-                if (studentReadDto != null)
+                if (studentForCreateDto != null)
                 {
-                    return Ok(studentReadDto);
+                    return Ok(studentForCreateDto);
                 }
                 return NotFound();
             }

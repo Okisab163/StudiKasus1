@@ -1,12 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PaymentService.Dtos
 {
     public class PaymentForCreateDto
     {
         [Required]
-        public string HowTo { get; set; }
+        public int Price { get; set; }
         [Required]
-        public string CommandLine { get; set; }
+        public DateTime PaymentDate { get; set; }
     }
 }

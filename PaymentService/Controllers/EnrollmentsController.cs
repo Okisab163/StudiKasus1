@@ -37,30 +37,32 @@ namespace PaymentService.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult TestIndboundConnection()
-        {
-            Console.WriteLine("--> Inbound POST command services");
-            return Ok("Inbound test from platforms controller");
-        }
-
         //[HttpPost]
-        //public ActionResult CreateEnrollment(EnrollmentForCreateDto enrollmentForCreateDto)
+        //public ActionResult TestIndboundConnection()
         //{
-        //    try
-        //    {
-        //        var enrollmentModel = _mapper.Map<Enrollment>(enrollmentForCreateDto);
-        //        _repository.CreateEnrollment(enrollmentModel);
-        //        _repository.SaveChanges();
-
-        //        var enrollmentReadDto = _mapper.Map<EnrollmentDto>(enrollmentModel);
-
-        //        return Ok(enrollmentReadDto);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
+        //    Console.WriteLine("--> Inbound POST command services");
+        //    return Ok("Inbound test from platforms controller");
         //}
+
+        [HttpPost]
+        public ActionResult CreateEnrollment(EnrollmentForCreateDto enrollmentForCreateDto)
+        {
+            try
+            {
+                Console.WriteLine("--> Inbound POST command services");
+
+                var enrollmentModel = _mapper.Map<Enrollment>(enrollmentForCreateDto);
+                _repository.CreateEnrollment(enrollmentModel);
+                _repository.SaveChanges();
+
+                var enrollmentReadDto = _mapper.Map<EnrollmentDto>(enrollmentModel);
+
+                return Ok(enrollmentReadDto);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

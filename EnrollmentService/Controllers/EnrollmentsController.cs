@@ -71,11 +71,9 @@ namespace EnrollmentService.Controllers
                 _repository.UpdateEnrollment(id, enrollmenteModel);
                 _repository.SaveChanges();
 
-                var enrollmentReadDto = _mapper.Map<EnrollmentDto>(enrollmenteModel);
-
-                if (enrollmentReadDto != null)
+                if (enrollmentForCreateDto != null)
                 {
-                    return Ok(enrollmentReadDto);
+                    return Ok(enrollmentForCreateDto);
                 }
                 return NotFound();
             }
@@ -120,6 +118,7 @@ namespace EnrollmentService.Controllers
                     try
                     {
                         await _enrollmentDataClient.SendEnrollmentToPaymentService(enrollmentReadDto);
+                        return Ok(enrollmentReadDto);
                     }
                     catch (Exception ex)
                     {

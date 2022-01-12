@@ -68,11 +68,9 @@ namespace EnrollmentService.Controllers
                 _repository.UpdateCourse(id, courseModel);
                 _repository.SaveChanges();
 
-                var courseReadDto = _mapper.Map<CourseDto>(courseModel);
-
-                if (courseReadDto != null)
+                if (courseForCreateDto != null)
                 {
-                    return Ok(courseReadDto);
+                    return Ok(courseForCreateDto);
                 }
                 return NotFound();
             }

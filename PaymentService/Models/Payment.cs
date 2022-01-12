@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PaymentService.Models
 {
@@ -8,9 +9,9 @@ namespace PaymentService.Models
         [Required]
         public int PaymentID { get; set; }
         [Required]
-        public string HowTo { get; set; }
+        public int Price { get; set; }
         [Required]
-        public string CommandLine { get; set; }
+        public DateTime PaymentDate { get; set; }
         [Required]
         public int EnrollmentId { get; set; }
         public Enrollment Enrollment { get; set; }
