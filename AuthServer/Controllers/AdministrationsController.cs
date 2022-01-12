@@ -20,7 +20,7 @@ namespace AuthServer.Controllers
             _repository = repository;
         }
 
-        [HttpPost]
+        [HttpPost("Regitration")]
         [AllowAnonymous]
         public async Task<ActionResult> Registration(UserForCreateDto userForCreateDto)
         {

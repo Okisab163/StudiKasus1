@@ -38,7 +38,7 @@ namespace AuthServer.Data
                 }
                 else
                 {
-                    throw new System.Exception($"Role {roleName} Sudah Ada");
+                    throw new Exception($"Role {roleName} Sudah Ada");
                 }
 
             }
@@ -168,10 +168,10 @@ namespace AuthServer.Data
                 }
                 return lstRoles;
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
-                throw new System.Exception($"Error: {ex.Message}");
+                throw new Exception($"Error: {ex.Message}");
             }
         }
 
@@ -190,13 +190,13 @@ namespace AuthServer.Data
 
                 if (!result.Succeeded)
                 {
-                    throw new System.Exception("Gagal Menambahkan User ");
+                    throw new Exception("Gagal Menambahkan User ");
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
 
-                throw new System.Exception($"Error: {ex.Message}");
+                throw new Exception($"Error: {ex.Message}");
             }
         }
     }

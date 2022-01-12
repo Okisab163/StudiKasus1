@@ -10,7 +10,7 @@ using PaymentService.Data;
 namespace PaymentService.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220112174815_InitialCreate")]
+    [Migration("20220112202826_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -34,7 +34,7 @@ namespace AuthServer.Controllers
             }
         }
 
-        [HttpPost("Role/{rolename}")]
+        [HttpPost("Role")]
         public async Task<ActionResult> AddRole(RoleForCreateDto roleForCreateDto)
         {
             try

@@ -108,6 +108,8 @@ namespace AuthServer
             app.UseAuthentication();
             app.UseAuthorization();
 
+            PrepDb.PrepPopulation(app, env.IsProduction());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

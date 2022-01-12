@@ -3,6 +3,7 @@ using EnrollmentService.Data;
 using EnrollmentService.Dtos;
 using EnrollmentService.Models;
 using EnrollmentService.SyncDataServices.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -28,6 +29,7 @@ namespace EnrollmentService.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Administrator, Student")]
         public ActionResult<IEnumerable<EnrollmentDto>> GetEnrolments()
         {
             try
@@ -43,6 +45,7 @@ namespace EnrollmentService.Controllers
         }
 
         [HttpGet("{id}", Name = "GetEnrollmentById")]
+        [Authorize(Roles = "Administrator, Student")]
         public ActionResult<EnrollmentDto> GetEnrollmentById(int id)
         {
             try
@@ -62,6 +65,7 @@ namespace EnrollmentService.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<EnrollmentDto>> UpdateEnrollment(int id, EnrollmentForCreateDto enrollmentForCreateDto)
         {
             try
@@ -84,6 +88,7 @@ namespace EnrollmentService.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteEnrollment(int id)
         {
             try
@@ -101,6 +106,7 @@ namespace EnrollmentService.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public async Task<ActionResult<EnrollmentDto>> CreateEnrollment(EnrollmentForCreateDto enrollmentForCreateDto)
         {
             try
