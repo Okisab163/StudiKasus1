@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mssql-deploy-depl
+  name: mssql-depl
 spec:
   replicas: 1
   selector:
@@ -38,6 +38,34 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: mssql-auth-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: mssql
+  ports:
+  - name: mssql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mssql-enroll-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: mssql
+  ports:
+  - name: mssql
+    protocol: TCP
+    port: 1433
+    targetPort: 1433
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: mssql-payment-clusterip-srv
 spec:
   type: ClusterIP
@@ -52,7 +80,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mssql-payment-loadbalancer
+  name: mssql-loadbalancer
 spec:
   type: LoadBalancer
   selector:

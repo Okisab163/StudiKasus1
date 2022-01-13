@@ -37,13 +37,6 @@ namespace PaymentService.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult TestIndboundConnection()
-        //{
-        //    Console.WriteLine("--> Inbound POST command services");
-        //    return Ok("Inbound test from platforms controller");
-        //}
-
         [HttpPost]
         public ActionResult CreateEnrollment(EnrollmentForCreateDto enrollmentForCreateDto)
         {

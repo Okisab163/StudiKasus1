@@ -15,10 +15,6 @@ spec:
       containers:
       - name: paymentservice
         image: okisabeni163/paymentservice:latest
-        # Just spin & wait forever
-        command: [ "/bin/bash", "-c", "--" ]
-        args: [ "while true; do sleep 30; done;" ]
-
 ---
 apiVersion: v1
 kind: Service
