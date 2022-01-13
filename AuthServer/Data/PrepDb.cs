@@ -1,13 +1,7 @@
-﻿using AuthServer.Dtos;
-using AuthServer.Models;
+﻿using System;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AuthServer.Data
 {

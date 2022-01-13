@@ -1,9 +1,9 @@
 ﻿using EnrollmentService.Models;
+using System;
+using System.Linq;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Linq;
 
 namespace EnrollmentService.Data
 {
